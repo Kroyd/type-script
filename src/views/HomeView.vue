@@ -1,18 +1,26 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="card">
+    <h1>{{ title }}</h1>
+
+
+    <button class="btn" @click="navigate">Открыть рользователя</button>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router';
 
-@Options({
-  components: {
-    HelloWorld,
-  },
+export default defineComponent({
+  setup() {
+    const router = useRouter()
+    const navigate =  (): void => {
+      router.push('/about')
+    }
+      return {
+      title: 'Как Vue работает с TypeScript',
+      navigate
+    }
+  }
 })
-export default class HomeView extends Vue {}
 </script>
